@@ -41,4 +41,83 @@ Livrables :
 
 Quand tu as terminé, envoie nous un lien vers un repo github publique contenant ta solution à bruno.degomme@leexi.ai, et prends rendez-vous pour l'entretien techniqueici https://calendly.com/bruno-degomme/30min, de préférence en après-midi.
 
-Bien à toi
+
+## Résultats
+
+### Exploration des données
+
+#### Description des tables
+
+Voici les tables avec leurs variables et le type de ces variables, ainsi que des commentaires sur certaines données
+
+Table ravenstack_accounts.csv
+account_id (str) (clé primaire)
+account_name (str)
+industry (str)
+country (str)
+signup_date (str) -> pourrait être un objet date et non un str
+referral_source (str)
+plan_tier (str) -> pourrait être un int
+seats (int64)
+is_trial (bool)
+churn_flag (bool)
+
+Table ravenstack_churn_events.csv
+churn_event_id (str) (clé primaire)
+account_id (str)
+churn_date (str) -> pourrait être un objet date et non un str
+reason_code (str)
+refund_amount_usd (float64)
+preceding_upgrade_flag (bool)
+preceding_downgrade_flag (bool)
+is_reactivation (bool)
+feedback_text (str)
+
+Table ravenstack_feature_usage.csv
+usage_id (str) (clé primaire)
+subscription_id (str)
+usage_date (str) -> pourrait être un objet date et non un str
+feature_name (str)
+usage_count (int64)
+usage_duration_secs (int64)
+error_count (int64)
+is_beta_feature (bool)
+
+Table ravenstack_subscriptions.csv
+subscription_id (str) (clé primaire)
+account_id (str)
+start_date (str) -> pourrait être un objet date et non un str
+end_date (str) -> pourrait être un objet date et non un str
+plan_tier (str) -> pourrait être un int
+seats (int64)
+mrr_amount (int64) -> devrait être un float
+arr_amount (int64) -> devrait être un float
+is_trial (bool)
+upgrade_flag (bool)
+downgrade_flag (bool)
+churn_flag (bool)
+billing_frequency (str)
+auto_renew_flag (bool)
+
+Table ravenstack_support_tickets.csv
+ticket_id (str) (clé primaire)
+account_id (str)
+submitted_at (str) -> pourrait être un objet date et non un str
+closed_at (str) -> pourrait être un objet date et non un str
+resolution_time_hours (float64)
+priority (str) -> pourrait être un int
+first_response_time_minutes (int64)
+satisfaction_score (float64)
+escalation_flag (bool)
+
+
+#### Analyse :
+
+Nous avons des comptes ("accounts") pour chaque client. Ces comptes peuvent être reliés à plusieurs souscriptions ("subscriptions"). Chaqune de ces souscriptions peut avoir des fonctionnalités ("features"). Chacun des clients peut annuler son abonnement ("churn"). Ils peuvent également générer des ticket de support ("support_tickets")
+
+Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrait fussioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
+
+### évolution du MRR
+
+![évolution du MRR](output/monthly_mrr.jpg)
+

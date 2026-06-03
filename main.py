@@ -7,7 +7,7 @@ from typing import Any
 import mlcroissant as mlc
 import pandas as pd
 
-import visualisation
+import calcul
 
 
 CROISSANT_URL = (
@@ -32,6 +32,16 @@ def load_record_set(dataset: mlc.Dataset, record_set_id: str) -> pd.DataFrame:
 	records = dataset.records(record_set=record_set_id)
 	rows = [{key: decode_value(value) for key, value in row.items()} for row in records]
 	return pd.DataFrame(rows)
+
+
+def normalize_cached_table(table: pd.DataFrame) -> pd.DataFrame:
+	"""Restore date-like columns after reading a cached CSV."""
+
+	for column_name in table.columns:
+		short_name = column_name.split("/", 1)[1]
+		if "date" in short_name:
+			table[column_name] = pd.to_datetime(table[column_name], errors="coerce")
+	return table
 
 
 def load_dataset_from_remote() -> dict[str, pd.DataFrame]:
@@ -65,7 +75,7 @@ def load_dataset_from_cache() -> dict[str, pd.DataFrame]:
 	tables: dict[str, pd.DataFrame] = {}
 
 	for table_name in manifest["tables"]:
-		tables[table_name] = pd.read_csv(DATA_DIR / table_name)
+		tables[table_name] = normalize_cached_table(pd.read_csv(DATA_DIR / table_name))
 
 	return tables
 
@@ -96,8 +106,8 @@ def load_dataset() -> dict[str, pd.DataFrame]:
 def main() -> None:
 	tables = load_dataset()
 
-	print(f"Loaded {len(tables)} tables")
-	visualisation.visualize(tables)    
+	#calcul.visualize_tables(tables)
+	calcul.show_mrr(tables)   
 
 
 if __name__ == "__main__":
