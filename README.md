@@ -141,4 +141,8 @@ Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrai
 ![évolution du Churn](output/monthly_churn.jpg)
 
 
+### Proposition de KPI
 
+- **MMR** et **ARR**
+- Ratio **Nouveau client** sur **Nombre de client**
+- Ratio **Churn** sur **Nombre de client**
