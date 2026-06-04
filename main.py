@@ -107,7 +107,8 @@ def main() -> None:
 	tables = load_dataset()
 
 	#calcul.visualize_tables(tables)
-	calcul.show_mrr(tables)   
+	#calcul.show_mrr(tables)   
+	calcul.show_churn(tables)
 
 
 if __name__ == "__main__":

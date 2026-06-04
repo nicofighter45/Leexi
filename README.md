@@ -50,65 +50,80 @@ Quand tu as terminé, envoie nous un lien vers un repo github publique contenant
 
 Voici les tables avec leurs variables et le type de ces variables, ainsi que des commentaires sur certaines données
 
-Table ravenstack_accounts.csv
-account_id (str) (clé primaire)
-account_name (str)
-industry (str)
-country (str)
-signup_date (str) -> pourrait être un objet date et non un str
-referral_source (str)
-plan_tier (str) -> pourrait être un int
-seats (int64)
-is_trial (bool)
-churn_flag (bool)
+**ravenstack_accounts.csv**
 
-Table ravenstack_churn_events.csv
-churn_event_id (str) (clé primaire)
-account_id (str)
-churn_date (str) -> pourrait être un objet date et non un str
-reason_code (str)
-refund_amount_usd (float64)
-preceding_upgrade_flag (bool)
-preceding_downgrade_flag (bool)
-is_reactivation (bool)
-feedback_text (str)
+| Colonne | Type | Notes |
+|---|---:|---|
+| account_id | str | Clé primaire |
+| account_name | str |  |
+| industry | str |  |
+| country | str |  |
+| signup_date | str | Pourait être une date |
+| referral_source | str |  |
+| plan_tier | str | Pourait être un int |
+| seats | int64 |  |
+| is_trial | bool |  |
+| churn_flag | bool |  |
 
-Table ravenstack_feature_usage.csv
-usage_id (str) (clé primaire)
-subscription_id (str)
-usage_date (str) -> pourrait être un objet date et non un str
-feature_name (str)
-usage_count (int64)
-usage_duration_secs (int64)
-error_count (int64)
-is_beta_feature (bool)
+**ravenstack_churn_events.csv**
 
-Table ravenstack_subscriptions.csv
-subscription_id (str) (clé primaire)
-account_id (str)
-start_date (str) -> pourrait être un objet date et non un str
-end_date (str) -> pourrait être un objet date et non un str
-plan_tier (str) -> pourrait être un int
-seats (int64)
-mrr_amount (int64) -> devrait être un float
-arr_amount (int64) -> devrait être un float
-is_trial (bool)
-upgrade_flag (bool)
-downgrade_flag (bool)
-churn_flag (bool)
-billing_frequency (str)
-auto_renew_flag (bool)
+| Colonne | Type | Notes |
+|---|---:|---|
+| churn_event_id | str | Clé primaire |
+| account_id | str |  |
+| churn_date | str | Pourait être une date |
+| reason_code | str |  |
+| refund_amount_usd | float64 |  |
+| preceding_upgrade_flag | bool |  |
+| preceding_downgrade_flag | bool |  |
+| is_reactivation | bool |  |
+| feedback_text | str |  |
 
-Table ravenstack_support_tickets.csv
-ticket_id (str) (clé primaire)
-account_id (str)
-submitted_at (str) -> pourrait être un objet date et non un str
-closed_at (str) -> pourrait être un objet date et non un str
-resolution_time_hours (float64)
-priority (str) -> pourrait être un int
-first_response_time_minutes (int64)
-satisfaction_score (float64)
-escalation_flag (bool)
+**ravenstack_feature_usage.csv**
+
+| Colonne | Type | Notes |
+|---|---:|---|
+| usage_id | str | Clé primaire |
+| subscription_id | str |  |
+| usage_date | str | Pourait être une date |
+| feature_name | str |  |
+| usage_count | int64 |  |
+| usage_duration_secs | int64 |  |
+| error_count | int64 |  |
+| is_beta_feature | bool |  |
+
+**ravenstack_subscriptions.csv**
+
+| Colonne | Type | Notes |
+|---|---:|---|
+| subscription_id | str | Clé primaire |
+| account_id | str |  |
+| start_date | str | Pourait être une date |
+| end_date | str | Pourait être une date |
+| plan_tier | str | Pourait être un int |
+| seats | int64 |  |
+| mrr_amount | int64 | Devrait être un float |
+| arr_amount | int64 | Devrait être un float |
+| is_trial | bool |  |
+| upgrade_flag | bool |  |
+| downgrade_flag | bool |  |
+| churn_flag | bool |  |
+| billing_frequency | str |  |
+| auto_renew_flag | bool |  |
+
+**ravenstack_support_tickets.csv**
+
+| Colonne | Type | Notes |
+|---|---:|---|
+| ticket_id | str | Clé primaire |
+| account_id | str |  |
+| submitted_at | str | Pourait être une date |
+| closed_at | str |Pourait être une date |
+| resolution_time_hours | float64 |  |
+| priority | str | Pourait être un int |
+| first_response_time_minutes | int64 |  |
+| satisfaction_score | float64 |  |
+| escalation_flag | bool |  |
 
 
 #### Analyse :
@@ -121,3 +136,13 @@ Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrai
 
 ![évolution du MRR](output/monthly_mrr.jpg)
 
+### évolution du Churn
+
+![évolution du Churn](output/monthly_churn.jpg)
+
+
+### Proposition de KPI
+
+- **MMR** et **ARR**
+- Ratio **Nouveau client** sur **Nombre de client**
+- Ratio **Churn** sur **Nombre de client**
