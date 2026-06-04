@@ -128,9 +128,9 @@ Voici les tables avec leurs variables et le type de ces variables, ainsi que des
 
 #### Analyse :
 
-Nous avons des comptes ("accounts") pour chaque client. Ces comptes peuvent être reliés à plusieurs souscriptions ("subscriptions"). Chaqune de ces souscriptions peut avoir des fonctionnalités ("features"). Chacun des clients peut annuler son abonnement ("churn"). Ils peuvent également générer des ticket de support ("support_tickets")
+Nous avons des comptes (« accounts ») pour chaque client. Ces comptes peuvent être reliés à plusieurs souscriptions (« subscriptions »). Chacune de ces souscriptions peut avoir des fonctionnalités (« features »). Chacun des clients peut annuler son abonnement (« churn »). Ils peuvent également générer des tickets de support (« support_tickets »).
+Il faut s’assurer qu’il n’y a qu’une subscription active par compte. On pourrait fusionner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegardant l’état actuel du compte (abonné ou non), ce qui réduirait la taille du stockage et le temps de calcul nécessaires.
 
-Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrait fusioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
 
 ### évolution du MRR
 
@@ -148,9 +148,9 @@ Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrai
 
 ### évolution du modèle
 
-On pourrait utilisé une base de donné et automatisé le dashboard en piochant dans la base.\\
-Concernant la structure des données, je reviens sur ce que j'ai dis précédemment, on pourrait fusioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
+On pourrait utiliser une base de données et automatiser le dashboard en puisant dans la base.
+Concernant la structure des données, je reviens sur ce que j’ai dit précédemment : on pourrait fusionner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegardant l’état actuel du compte (abonné ou non), ce qui réduirait la taille du stockage et le temps de calcul nécessaires.
 
 ### Limites
 
-Le dataset ne couvre que quelques mois, on ne peut donc dégager de tendance long terme. Egalement, une analyse quotidienne serait plus précise.
+Le dataset ne couvre que quelques mois : on ne peut donc dégager des tendances à long terme. Également, une analyse quotidienne serait plus précise.
