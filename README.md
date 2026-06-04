@@ -130,7 +130,7 @@ Voici les tables avec leurs variables et le type de ces variables, ainsi que des
 
 Nous avons des comptes ("accounts") pour chaque client. Ces comptes peuvent être reliés à plusieurs souscriptions ("subscriptions"). Chaqune de ces souscriptions peut avoir des fonctionnalités ("features"). Chacun des clients peut annuler son abonnement ("churn"). Ils peuvent également générer des ticket de support ("support_tickets")
 
-Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrait fussioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
+Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrait fusioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
 
 ### évolution du MRR
 
@@ -140,9 +140,13 @@ Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrai
 
 ![évolution du Churn](output/monthly_churn.jpg)
 
-
 ### Proposition de KPI
 
 - **MMR** et **ARR**
 - Ratio **Nouveau client** sur **Nombre de client**
 - Ratio **Churn** sur **Nombre de client**
+
+### évolution du modèle
+
+On pourrait utilisé une base de donné et automatisé le dashboard en piochant dans la base.\\
+Concernant la structure des données, je reviens sur ce que j'ai dis précédemment, on pourrait fusioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
