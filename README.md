@@ -150,3 +150,7 @@ Il faut s'assurer qu'il n'y est qu'une sousription active par compte. On pourrai
 
 On pourrait utilisé une base de donné et automatisé le dashboard en piochant dans la base.\\
 Concernant la structure des données, je reviens sur ce que j'ai dis précédemment, on pourrait fusioner les tables churn et subscription dans account, en gardant un historique des souscriptions/annulations et en sauvegarde l'état actuelle du compte (abonné ou pas) ce qui réduirait la taille du stockage et le temps de calcul nécessaire.
+
+### Limites
+
+Le dataset ne couvre que quelques mois, on ne peut donc dégager de tendance long terme. Egalement, une analyse quotidienne serait plus précise.
